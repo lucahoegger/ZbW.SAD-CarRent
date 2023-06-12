@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRent", "CarRent\CarRent.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{FDE33EFB-4FF0-47B7-8662-AD72567079BF}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Library\CloudStorage\OneDrive-Personal\ZbW Diplom\4. Semester\Software Architektur und Design\CarRent.vpd = ..\..\..\..\Library\CloudStorage\OneDrive-Personal\ZbW Diplom\4. Semester\Software Architektur und Design\CarRent.vpd
+		..\Dokumentation\CarRent_context_diagram.svg = ..\Dokumentation\CarRent_context_diagram.svg
 	EndProjectSection
 EndProject
 Global
