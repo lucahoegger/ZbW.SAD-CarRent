@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace CarRent.Controllers;
+namespace Zbw.CarRent.Controllers;
 
 [ApiController]
 [Route("[controller]")]

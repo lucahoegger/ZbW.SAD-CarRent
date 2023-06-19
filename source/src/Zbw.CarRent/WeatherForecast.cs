@@ -1,4 +1,4 @@
-namespace CarRent;
+namespace Zbw.CarRent;
 
 public class WeatherForecast
 {
