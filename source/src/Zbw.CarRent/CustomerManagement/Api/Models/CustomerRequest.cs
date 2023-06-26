@@ -1,4 +1,4 @@
-namespace Zbw.CarRent.Api;
+namespace Zbw.CarRent.CustomerManagement.Api.Models;
 
 public record CustomerRequest(
     Guid id, 

@@ -13,8 +13,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Customers\Domain\" />
-      <Folder Include="Customers\Infrastructure\" />
+      <Folder Include="CarManagement\Api\" />
+      <Folder Include="CarManagement\Domain\" />
+      <Folder Include="CarManagement\Infrastructure\" />
+      <Folder Include="Common\" />
     </ItemGroup>
 
 </Project>
