@@ -1,0 +1,12 @@
+services:
+  sql1:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sql1
+    hostname: sql1
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: YourStrong@Passw0rd
+      MSSQL_PID: Express
+

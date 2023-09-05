@@ -1,12 +1,11 @@
-namespace Zbw.CarRent.CustomerManagement.Domain;
-
-public interface ICustomerRepository
+﻿namespace Zbw.Carrent.CustomerManagement.Domain
 {
-    IEnumerable<Customer> GetAll();
-
-    Customer? Get(Guid id);
-
-    Customer Add(Customer customer);
-    
-    void Remove(Guid id);
+    public interface ICustomerRepository
+    {
+        IEnumerable<Customer> GetAll();
+        Customer? Get(Guid id);
+        Customer Add(Customer customer);
+        void Remove(Guid id);
+        Customer Update(Customer customer);
+    }
 }

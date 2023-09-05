@@ -1,10 +1,14 @@
-namespace Zbw.CarRent.CustomerManagement.Domain;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
-public class Customer
+namespace Zbw.Carrent.CustomerManagement.Domain
 {
-    public Guid Id { get; set; }
-    public string CustomerNr { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string? Address { get; set; }
+    public class Customer
+    {
+        public Guid Id { get; set; }
+        public int CustomerNr { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+    }
 }
