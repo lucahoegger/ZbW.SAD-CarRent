@@ -52,4 +52,6 @@ Als Sachbearbeiter möchte ich bei Abholung eines Autos durch den Kunden die Res
 
 ## CI/CD und Metriken
 
-Siehe File: [github workflows yml](.github/workflows/build.yml)
+CI/CD: [Github Actions](https://github.com/lucahoegger/ZbW.SAD-CarRent/actions)
+
+Metriken: [SonarCloud](https://sonarcloud.io/summary/overall?id=lucahoegger_ZbW.SAD-CarRent)
