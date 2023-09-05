@@ -9,12 +9,13 @@ namespace Zbw.Carrent.ReservationManagement.Api;
 public class ReservationController : ControllerBase
 {
     private readonly IReservationRepository _repository;
+
     public ReservationController(IReservationRepository repository)
     {
         ArgumentNullException.ThrowIfNull(repository);
         _repository = repository;
     }
-    
+
     [HttpGet]
     public IActionResult Get()
     {
@@ -22,20 +23,17 @@ public class ReservationController : ControllerBase
         var reservationResponses = allReservations.Select(MapToResponse);
         return Ok(reservationResponses);
     }
-    
+
     [HttpGet("{id}")]
     public IActionResult Get(Guid id)
     {
         var reservation = _repository.Get(id);
-        if (reservation != null)
-        {
-            return Ok(MapToResponse(reservation));
-        }
+        if (reservation != null) return Ok(MapToResponse(reservation));
         return NotFound();
     }
-    
+
     [HttpPost]
-    public ReservationResponse Post([FromBody] ReservationCreateRequest value)
+    public IActionResult Post([FromBody] ReservationCreateRequest value)
     {
         var newReservation = new Reservation
         {
@@ -46,9 +44,9 @@ public class ReservationController : ControllerBase
             CustomerId = value.CustomerId
         };
         var addedReservation = _repository.Add(newReservation);
-        return MapToResponse(addedReservation);
+        return Ok(MapToResponse(addedReservation));
     }
-    
+
     [HttpPut("{id}")]
     public IActionResult Put(Guid id, [FromBody] ReservationRequest value)
     {
@@ -61,7 +59,7 @@ public class ReservationController : ControllerBase
         _repository.Update(reservation);
         return Ok();
     }
-    
+
     [HttpDelete("{id}")]
     public IActionResult Delete(Guid id)
     {
@@ -73,7 +71,7 @@ public class ReservationController : ControllerBase
 
     private ReservationResponse MapToResponse(Reservation reservation)
     {
-        return new ReservationResponse(reservation.Id, reservation.AmountOfDays, reservation.TotalCosts, null, null);
+        return new ReservationResponse(reservation.Id, reservation.AmountOfDays, reservation.TotalCosts,
+            reservation.Car.Id, reservation.Customer.Id);
     }
-
 }

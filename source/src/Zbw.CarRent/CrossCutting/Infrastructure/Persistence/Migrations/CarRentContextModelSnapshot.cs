@@ -107,6 +107,25 @@ namespace Zbw.Carrent.CrossCutting.Infrastructure.Persistence.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("Zbw.Carrent.ReservationManagement.Domain.RentalContract", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ReservationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReservationId");
+
+                    b.ToTable("RentalContracts");
+                });
+
             modelBuilder.Entity("Zbw.Carrent.ReservationManagement.Domain.Reservation", b =>
                 {
                     b.Property<Guid>("Id")
@@ -152,6 +171,17 @@ namespace Zbw.Carrent.CrossCutting.Infrastructure.Persistence.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Class");
+                });
+
+            modelBuilder.Entity("Zbw.Carrent.ReservationManagement.Domain.RentalContract", b =>
+                {
+                    b.HasOne("Zbw.Carrent.ReservationManagement.Domain.Reservation", "Reservation")
+                        .WithMany()
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("Zbw.Carrent.ReservationManagement.Domain.Reservation", b =>
