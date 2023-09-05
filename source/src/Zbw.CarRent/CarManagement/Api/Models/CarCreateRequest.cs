@@ -7,4 +7,4 @@ public record CarCreateRequest(
     string IdentificationNr,
     CarBrand Brand,
     CarClass CarClass
-    );
+);

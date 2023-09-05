@@ -7,4 +7,4 @@ public record CarRequest(
     string IdentificationNr,
     CarBrand Brand,
     CarClass CarClass
-    );
+);

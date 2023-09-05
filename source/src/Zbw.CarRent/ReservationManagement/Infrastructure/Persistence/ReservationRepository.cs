@@ -7,12 +7,12 @@ namespace Zbw.Carrent.ReservationManagement.Infrastructure.Persistence;
 public class ReservationRepository : IReservationRepository
 {
     private readonly CarRentContext _context;
-    
+
     public ReservationRepository(CarRentContext context)
     {
         _context = context;
     }
-    
+
     public IEnumerable<Reservation> GetAll()
     {
         return _context.Reservations
