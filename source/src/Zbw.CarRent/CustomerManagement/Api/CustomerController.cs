@@ -42,7 +42,7 @@
         {
             var newCustomer = new Customer
             {
-                Id = Guid.NewGuid(),
+                Id = value.Id,
                 CustomerNr = value.CustomerNr,
                 FirstName = value.Firstname,
                 LastName = value.Lastname,
