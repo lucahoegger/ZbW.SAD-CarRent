@@ -5,12 +5,19 @@ Mini-Projekt CarRent für ZbW SAD
 ## C4-Pattern
 
 ### Context-Diagram
-![](Documentation/Context Diagram/CarRent_context_diagram.svg)
+
+![Test](Documentation/Context_Diagram/CarRent_context_diagram.svg)
+
 ### Container-Diagram
-![](Documentation/Container Diagram/CarRent_container_diagram.vpd.svg)
+
+![](Documentation/Container_Diagram/CarRent_container_diagram.vpd.svg)
+
 ### Components-Diagram
-![](Documentation/Component Diagram/component_diagram.vpd.svg)
+
+![](Documentation/Component_Diagram/component_diagram.vpd.svg)
+
 ## Use Cases im Brief Format
+
 ### UC1: Kunden verwalten
 
 Der Sachbearbeiter kann die Kunden im System verwalten (CRUD). Er kann Kunden nach dessen Namen oder Kundennummer suchen.
@@ -36,8 +43,13 @@ Als Kunde möchte ich meine bestehenden Reservation einsehen, stornieren oder an
 Als Sachbearbeiter möchte ich bei Abholung eines Autos durch den Kunden die Reservation in einen Mietvertrag umwandeln können.
 
 ## Domain Model
-![](Documentation/Domain Model/domainmodel.png)
+
+![](Documentation/Domain_Model/domainmodel.png)
+
 ## Deployment View
-![](Documentation/Deployment View/deployment_view.vpd.svg)
+
+![](Documentation/Deployment_View/deployment_view.vpd.svg)
+
 ## CI/CD und Metriken
+
 Siehe File: [github workflows yml](.github/workflows/build.yml)
