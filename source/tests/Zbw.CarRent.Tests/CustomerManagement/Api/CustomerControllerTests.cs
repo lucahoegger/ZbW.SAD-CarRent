@@ -68,7 +68,6 @@ public class CustomerControllerTests
         var result = customerController.Get(customerId) as OkObjectResult;
 
         // Assert
-
         result.Should().NotBeNull();
         result.Value.Should().BeEquivalentTo(new CustomerResponse(customerId, 1, "Hans", "Peter", "Altgasse 12"));
     }
@@ -99,5 +98,70 @@ public class CustomerControllerTests
 
         // Assert
         result.Should().BeEquivalentTo(new CustomerResponse(customerId, 1, "Lorem", "Ipsum", "Multerweg 12"));
+    }
+
+    [Fact]
+    public void Put_Should_Update_Customer()
+    {
+        // Arrange
+        var customerId = Guid.NewGuid();
+        var mockICustomerRepo = new Mock<ICustomerRepository>(MockBehavior.Strict);
+        var existingCustomer = new Customer
+        {
+            Id = customerId,
+            CustomerNr = 1,
+            Address = "Address",
+            FirstName = "Firstname",
+            LastName = "Lastname"
+        };
+
+        var updatedCustomer = new Customer
+        {
+            Id = customerId,
+            CustomerNr = 1,
+            Address = "NewAddress",
+            FirstName = "NewFirstname",
+            LastName = "NewLastname"
+        };
+        mockICustomerRepo.Setup(f => f.Get(It.Is<Guid>(g => g.Equals(customerId)))).Returns(existingCustomer);
+        mockICustomerRepo.Setup(f => f.Update(It.Is<Customer>(g => g.WithDeepEqual(updatedCustomer).Compare())))
+            .Returns(updatedCustomer);
+        var customerRequest = new CustomerRequest(customerId, "NewFirstname", "NewLastname", "NewAddress");
+        var customerController = new CustomerController(mockICustomerRepo.Object);
+
+        // Act
+
+        var result = customerController.Put(customerId, customerRequest) as OkObjectResult;
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Value.Should()
+            .BeEquivalentTo(new CustomerResponse(customerId, 1, "NewFirstname", "NewLastname", "NewAddress"));
+    }
+
+    [Fact]
+    public void Delete_Should_Remove_Customer()
+    {
+        // Arrange
+        var customerId = Guid.NewGuid();
+        var mockICustomerRepo = new Mock<ICustomerRepository>(MockBehavior.Strict);
+        var existingCustomer = new Customer
+        {
+            Id = customerId,
+            CustomerNr = 1,
+            Address = "Address",
+            FirstName = "Firstname",
+            LastName = "Lastname"
+        };
+        mockICustomerRepo.Setup(f => f.Get(It.Is<Guid>(g => g.Equals(customerId)))).Returns(existingCustomer);
+        mockICustomerRepo.Setup(f => f.Remove(It.Is<Guid>(g => g.Equals(customerId))));
+        var customerController = new CustomerController(mockICustomerRepo.Object);
+
+        // Act
+        var result = customerController.Delete(customerId) as OkResult;
+
+        // Assert
+        result.Should().NotBeNull();
+        result.StatusCode.Should().Be(200);
     }
 }
